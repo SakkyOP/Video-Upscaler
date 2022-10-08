@@ -19,7 +19,7 @@ frame_count = 0
 
 while True:
     ret, frame = video.read()
-    if ret:
+    if not ret:
         break
     
     frame_count += 1
@@ -33,8 +33,9 @@ while True:
     out_video.write(up_frame)
     
     print(f"No. of Frames processed {frame_count}")
-    
+
 out_video.release()
+
 video.release()
 
 VideoFileClip(OUT_VIDEO).set_audio(VideoFileClip(IN_VIDEO).audio)
