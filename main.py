@@ -7,7 +7,7 @@ from upscaler import upscale_image
 CURRENT_DIRECTORY = os.getcwd()
 
 IN_VIDEO = ".\\data\\in_video\\video_1.mp4"
-OUT_VIDEO = ".\\data\\out_video\\upscale_video.mp4"
+OUT_VIDEO = ".\\data\\out_video\\upscale_video.avi"
 MODEL_PATH = os.path.join(CURRENT_DIRECTORY,"models","FSRCNN_x4.pb")
 MODEL_NAME = "fsrcnn"
 SCALE = 4
@@ -15,11 +15,13 @@ FPS = 24
 
 video = cv2.VideoCapture(IN_VIDEO)
 
-ret = True
 frame_count = 0
 
-while ret:
+while True:
     ret, frame = video.read()
+    if ret:
+        break
+    
     frame_count += 1
     up_frame = upscale_image(frame, MODEL_PATH, MODEL_NAME, SCALE)
     
