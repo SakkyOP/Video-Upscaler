@@ -6,3 +6,4 @@ __pycache__
 
 data/in_video/*
 data/out_video/*
+data/out_frames/*
